@@ -1,0 +1,9 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+.card {
+    margin-top: 1rem;
+}
+
+.input-group-text input {
+    margin-right: 0.5rem;
+}

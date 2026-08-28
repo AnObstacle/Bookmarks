@@ -1,0 +1,35 @@
+<div class="bookmarks-container">
+  <div class="search">
+    <div class="input-group">
+      <input class="form-control" type="text" placeholder="Search"
+        [(ngModel)]="search"
+        (keyup)="onKeyUpOnSearch($event)">
+      <div class="input-group-append">
+        <span class="input-group-text">
+          <input type="checkbox" aria-label="Activate reset keys" id="should-reset-search"
+            [(ngModel)]="shouldResetSearch">
+          <span>Activate reset</span>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="bookmarks">
+    <div class="row">
+      @for (group of filteredGroups; track group) {
+        <div class="col-4"
+          >
+          <div class="card">
+            <div class="card-header">{{group.title}}</div>
+            <ul class="list-group list-group-flush">
+              @for (bookmark of group.bookmarks; track bookmark) {
+                <li class="list-group-item" (click)="clickOnBookmark()">
+                  <a [href]="bookmark.url">{{bookmark.text}}</a>
+                </li>
+              }
+            </ul>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</div>

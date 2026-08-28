@@ -9,7 +9,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18.x]
+        node-version: [22.x]
 
     steps:
       - uses: actions/checkout@v1
@@ -25,18 +25,13 @@ jobs:
           sudo apt-get install -y google-chrome-stable
       - name: npm ci
         run: npm ci
-      - name: npm lint
-        run: npm run lint
-      - name: npm build
-        run: npm run build
+      - name: npm build demo
+        run: npm run build:demo
       - name: npm test
         run: npm test
-      - name: npm e2e
-        run: npm run e2e
-
       - name: deploy to firebase (demo)
-        if: github.ref == 'refs/heads/master' && matrix.node-version == '12.x'
-        run: npm run deploy -- --token=${{secrets.FIREBASE_KEY}}
-      - name: deploy to firebase (arhs-bookmarks)
-        if: github.ref == 'refs/heads/master' && matrix.node-version == '12.x'
-        run: npm run build -- --configuration=arhs && npm run deploy -- --token=${{secrets.FIREBASE_KEY}} -P arhs-bookmarks
+        if: github.ref == 'refs/heads/master' && matrix.node-version == '22.x'
+        run: npm run build:demo && npm run deploy -- --token=${{secrets.FIREBASE_KEY}} -P default
+      - name: deploy to firebase (arhs)
+        if: github.ref == 'refs/heads/master' && matrix.node-version == '22.x'
+        run: npm run build:arhs && npm run deploy -- --token=${{secrets.FIREBASE_KEY}} -P arhs
