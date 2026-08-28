@@ -2,5 +2,17 @@
   "projects": {
     "default": "bookmarks-c204f",
     "arhs": "arhs-bookmarks"
+  },
+  "targets": {
+    "bookmarks-c204f": {
+      "hosting": {
+        "demo": ["bookmarks-c204f"]
+      }
+    },
+    "arhs-bookmarks": {
+      "hosting": {
+        "demo": ["arhs-bookmarks"]
+      }
+    }
   }
 }
