@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "bookmarks-c204f"
+    "default": "bookmarks-c204f",
+    "arhs": "arhs-bookmarks"
   }
 }
